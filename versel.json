@@ -1,12 +1,5 @@
 {
     "rewrites": [
-      { "source": "/signup", "destination": "/" },
-      { "source": "/signin", "destination": "/" },
-      { "source": "/blog/:id", "destination": "/" },
-      { "source": "/blogs", "destination": "/" },
-      { "source": "/publish", "destination": "/" },
-      { "source": "/", "destination": "/" }
-    ],
-    "cleanUrls": true,
-    "trailingSlash": false
+      { "source": "/(.*)", "destination": "/$1" }
+    ]
   }
