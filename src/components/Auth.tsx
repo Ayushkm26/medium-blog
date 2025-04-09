@@ -3,6 +3,8 @@ import { ChangeEvent, useState } from "react";
 import { Link,  useNavigate } from "react-router-dom"
 import axios from "axios";
 import { BACKEND_URL } from "../config";
+import {toast} from 'react-toastify';
+
 export const Auth= ({type}:{type: "signup" | "signin"})=>{
     const navigate=useNavigate();
     const [postInput,setPostInputs]=useState<SignupInput>({
@@ -15,9 +17,12 @@ export const Auth= ({type}:{type: "signup" | "signin"})=>{
      const responce=await axios.post(`${BACKEND_URL}/api/v1/user/${type==="signup"?"signup":"signin"}`,postInput)
      const jwt=responce.data;
      localStorage.setItem("token",jwt)
+     toast.success(`${type === "signup" ? "Signup" : "Signin"} successful!`);
+
      navigate("/blogs");
     }catch(e){ 
-        //
+        //@ts-ignore
+        toast.error(`Error: ${e.response?.data?.msg || "Something went wrong!"}`);
     }
 }
 

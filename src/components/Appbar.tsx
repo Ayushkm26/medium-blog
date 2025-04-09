@@ -1,6 +1,7 @@
 import { Avatar } from "./Blogcard"
 import { Link } from "react-router-dom"
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 export const Appbar=()=>{
     const navigate=useNavigate()
     return <div className= "border-b flex justify-between px-10 py-4">
@@ -20,7 +21,9 @@ export const Appbar=()=>{
     function Logout(){
     
         localStorage.removeItem("token");
+        toast.success("Logout Successfully");
              navigate("/signin")
+
     }
 } 
 
