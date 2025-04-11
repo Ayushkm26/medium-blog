@@ -15,7 +15,11 @@ export const FullBlog = ({ blog }: {blog: Blog}) => {
                         {blog.publishedDate ? blog.publishedDate : "Date not available"}
                     </div>
                     <div>
-                    <img src={blog.imageurl} alt="Uploaded" className="mt-2 rounded-lg shadow-md" />
+                    {blog.imageurl ? (
+             <img src={blog.imageurl} alt="" className="mt-2 rounded-lg shadow-md" />
+                ) : (
+                       " "
+                    )}
                         </div>
                     <div className="pt-4">
                         {blog.content}
