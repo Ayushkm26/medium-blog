@@ -57,3 +57,32 @@ export const useBlogs = () => {
         blogs
     }
 }
+
+
+export const userMultipleBlog = () => {
+    const [loading, setLoading] = useState(true);
+    const [blogs, setmyBlogs] = useState<Blog[]>([]);
+
+    useEffect(() => {
+        
+        axios.get(`${BACKEND_URL}/api/v1/blog/user/blog`, {
+            headers: {
+                Authorization: localStorage.getItem("token")
+            },
+            
+        })
+            .then(response => {
+                setmyBlogs(response.data.blog);
+                setLoading(false);
+            })
+            .catch(error => {
+                console.error('Error fetching blog:', error);
+                setLoading(false);
+            });
+    }, []);
+
+    return {
+        loading,
+        blogs
+    };
+};

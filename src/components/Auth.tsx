@@ -15,9 +15,10 @@ export const Auth= ({type}:{type: "signup" | "signin"})=>{
    async  function  sendRequest(){
     try{
      const responce=await axios.post(`${BACKEND_URL}/api/v1/user/${type==="signup"?"signup":"signin"}`,postInput)
-     const { token, name } = responce.data; // Assuming the response contains the user's name
+     const { token, name,id } = responce.data; // Assuming the response contains the user's name
         localStorage.setItem("token", token);
         localStorage.setItem("username", name);
+        localStorage.setItem("userId", id);
      toast.success(`${type === "signup" ? "Signup" : "Signin"} successful!`);
       
      navigate("/blogs");

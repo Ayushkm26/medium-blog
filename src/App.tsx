@@ -6,6 +6,7 @@ import {Blogs} from "./pages/Blogs"
 import { Publish } from './pages/Publish'
 import './App.css'
 import LandingPage from './pages/LandingPage'
+import { Myblogs } from './components/Myblogs'
 
 function App() {
 
@@ -19,6 +20,8 @@ function App() {
       <Route path="/blog/:id" element={<Blog  />}/>
       <Route path="/blogs" element={<Blogs  />}/>
       <Route path="/publish" element={<Publish  />}/>
+      <Route path="/myblogs" element={<Myblogs  />}/>
+
     </Routes>
     </BrowserRouter>
      </>
