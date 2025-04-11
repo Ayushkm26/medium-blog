@@ -6,6 +6,7 @@ interface BlogcardProps{
      title:string;
      content:string;
      publishDate:string
+     imageurl:string
 }
 
 export const Blogcard=({
@@ -13,33 +14,47 @@ export const Blogcard=({
     authorName,
     title,
     content,
-    publishDate
+    publishDate,
+    imageurl
 }:BlogcardProps)=>{
    return <Link to={`/blog/${id}`}>
    <div className="border-b border-slate-200 p-4 pb-4 w-screen cursor-pointer">
-     <div className="flex"> 
-        <div className="flex justify-center flex-col"><Avatar name={authorName}/></div>
-        
-        <div className="font-extralight pl-2 text-sm flex justify-center flex-col">{authorName} </div>
-          <div className="flex justify-center flex-col pl-2 ">
-            <Circle />
-            </div>
-        <div className=" pl-2 font-thin text-slate-400 text-sm flex justify-center flex-co">{ publishDate}</div>
-        
-                
-     </div>
-     <div className="text-xl font-semibold pt-2">
-        {title}
-     </div>
+  <div className="flex"> 
+    <div className="flex justify-center flex-col">
+      <Avatar name={authorName} />
+    </div>
+    
+    <div className="font-extralight pl-2 text-sm flex justify-center flex-col">
+      {authorName}
+    </div>
+    
+    <div className="flex justify-center flex-col pl-2">
+      <Circle />
+    </div>
+    
+    <div className="pl-2 font-thin text-slate-400 text-sm flex justify-center flex-col">
+      {publishDate}
+    </div>
+  </div>
 
-     <div className="text-md font-thin">
-          {content.slice(0,100)+ "...."}
-     </div>
-     <div className="text-slate-400 text-sm font-thin pt-3">
-        {`${Math.ceil(content.length /100)} minute(s) read`}
-     </div>
-        
-   </div> 
+  <div className="flex items-center pt-2">
+    <div className="text-xl font-semibold">
+      {title}
+    </div>
+    
+    {imageurl && (
+      <img src={imageurl} alt="" className="ml-4 rounded-lg shadow-md w-32 h-auto" />
+    )}
+  </div>
+
+  <div className="text-md font-thin">
+    {content.slice(0, 100) + "...."}
+  </div>
+
+  <div className="text-slate-400 text-sm font-thin pt-3">
+    {`${Math.ceil(content.length / 100)} minute(s) read`}
+  </div>
+</div>
    </Link>
 }
 export function Avatar({ name, size = "small" }: { name: string, size?: "small" | "big" }) {
