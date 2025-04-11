@@ -8,6 +8,7 @@ export interface Blog {
     "title": string;
     "id": number;
     "publishedDate":string
+    "imageurl":string
     "author": {
         "name": string
     }

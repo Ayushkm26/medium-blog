@@ -23,6 +23,7 @@ export const Appbar=()=>{
     function Logout(){
         localStorage.removeItem("username");
         localStorage.removeItem("token");
+        localStorage.removeItem("url")
         toast.success("Logout Successfully");
              navigate("/signin")
 
