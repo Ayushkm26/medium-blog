@@ -66,7 +66,7 @@ export const MyBlogcard=({
   </div>
 </div>
    </Link>
-       <button onClick={()=>delBlog(id)}  type="button" className="mr-4 mt-2 text-black bg-blue-600 hover:bg-red-600 focus:outline-none focus:ring-4 focus:ring-red-600 font-medium rounded-2xl text-sm px-5 py-2.5 text-center me-2 mb-2 ">Delete Post</button>
+       <button onClick={()=>delBlog(id)}  type="button" className="mr-4 mt-2 text-black bg-blue-400 hover:bg-red-600 focus:outline-none focus:ring-4 focus:ring-red-600 font-medium rounded-2xl text-sm px-5 py-2.5 text-center me-2 mb-2 ">Delete Post</button>
 </>
 )}
 export function Avatar({ name, size = "small" }: { name: string, size?: "small" | "big" }) {
