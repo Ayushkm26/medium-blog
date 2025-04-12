@@ -95,6 +95,6 @@ export const delBlog = async (id: number) => {
         location.reload();
     } catch (error) {
         toast.error("Error deleting the blog.");
-        throw error; // Optionally rethrow the error for further handling
+        throw error; 
     }
 };
