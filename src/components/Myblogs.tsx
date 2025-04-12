@@ -2,7 +2,6 @@ import { Appbar } from "../components/Appbar";
 import { MyBlogcard } from "../components/MyBlogcard";
 import { userMultipleBlog } from "../hooks";
 import { BlogSkeleton } from "./BlogSkelton" // Fixed typo from BlogSkelton to BlogSkeleton
-import { delBlog } from "../components/MyBlogcard";
 
 export const Myblogs = () => {
     const { loading, blogs } = userMultipleBlog();
