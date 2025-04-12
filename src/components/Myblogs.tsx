@@ -1,10 +1,13 @@
 import { Appbar } from "../components/Appbar";
-import { Blogcard } from "../components/Blogcard";
+import { MyBlogcard } from "../components/MyBlogcard";
 import { userMultipleBlog } from "../hooks";
 import { BlogSkeleton } from "./BlogSkelton" // Fixed typo from BlogSkelton to BlogSkeleton
+import { delBlog } from "../components/MyBlogcard";
 
 export const Myblogs = () => {
     const { loading, blogs } = userMultipleBlog();
+//@ts-ignore
+ 
 
     if (loading) {
         return (
@@ -35,7 +38,7 @@ export const Myblogs = () => {
                             .slice()
                             .reverse()
                             .map(blog => (
-                                <Blogcard
+                                <MyBlogcard
                                     key={blog.id}
                                     id={blog.id}
                                     authorName={blog.author.name || "anonymous"}
