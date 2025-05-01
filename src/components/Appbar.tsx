@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 export const Appbar=()=>{
     const username = localStorage.getItem("username") || "User";
     const navigate=useNavigate()
-    return <div className= "border-b flex justify-between px-10 py-4">
+    return <div className= "border-b flex justify-between px-10 py-4 overflow-hidden">
         <div className=" flex flex-col justify-center">
             <Link to={"/blogs"}>Medium</Link>
         </div>

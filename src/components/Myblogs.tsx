@@ -12,7 +12,7 @@ export const Myblogs = () => {
         return (
             <div>
                 <Appbar />
-                <div className="flex justify-center">
+                <div className="flex justify-center overflow-hidden">
                     <div>
                         <BlogSkeleton />
                         <BlogSkeleton />
@@ -30,7 +30,7 @@ export const Myblogs = () => {
     return (
         <div>
             <Appbar />
-            <div className="flex justify-center">
+            <div className="flex justify-center overflow-hidden">
                 <div className="max-w-4xl">
                     {blogs && blogs.length > 0 ? (
                         blogs

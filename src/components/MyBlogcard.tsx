@@ -24,7 +24,7 @@ export const MyBlogcard=({
     imageurl
 }:MyBlogcardProps)=>{
    return (<>
-   <Link to={`/blog/${id}`}>
+   <Link to={`/blog/${id}`} className="overflow-hidden">
    <div className="border-b border-slate-200 p-4 pb-4 w-screen cursor-pointer">
   <div className="flex"> 
     <div className="flex justify-center flex-col">
