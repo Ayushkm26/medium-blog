@@ -15,27 +15,47 @@ export interface Blog {
 }
 
 export const useBlog = ({ id }: { id: string }) => {
-    const [loading, setLoading] = useState(true);
-    const [blog, setBlog] = useState<Blog>();
-
+    const [loading, setLoading] = useState(true)
+    const [blog, setBlog] = useState<Blog | null>(null)
+    const [error, setError] = useState<string | null>(null)
+  
     useEffect(() => {
-        axios.get(`${BACKEND_URL}/api/v1/blog/${id}`, {
+      const controller = new AbortController()
+  
+      const fetchBlog = async () => {
+        try {
+          const response = await axios.get(`${BACKEND_URL}/api/v1/blog/${id}`, {
             headers: {
-                Authorization: localStorage.getItem("token")
-            }
-        })
-            .then(response => {
-                setBlog(response.data.blog);
-                setLoading(false);
-            })
+              Authorization: localStorage.getItem("token") || "",
+            },
+            signal: controller.signal,
+          })
+          setBlog(response.data.blog)
+        } catch (err: any) {
+          if (axios.isCancel(err)) {
+            console.log("Fetch cancelled")
+          } else {
+            console.error(err)
+            setError("Failed to fetch blog")
+          }
+        } finally {
+          setLoading(false)
+        }
+      }
+  
+      fetchBlog()
+  
+      return () => {
+        controller.abort()
+      }
     }, [id])
-
+  
     return {
-        loading,
-        blog
+      loading,
+      blog,
+      error,
     }
-
-}
+  }
 export const useBlogs = () => {
     const [loading, setLoading] = useState(true);
     const [blogs, setBlogs] = useState<Blog[]>([]);

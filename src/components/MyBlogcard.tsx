@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import { toast } from 'react-toastify';
 import axios from "axios";
 import { BACKEND_URL } from "../config";
+//@ts-ignore
+import DOMPurify from "dompurify";
 
 
 
@@ -54,9 +56,16 @@ export const MyBlogcard=({
     )}
   </div>
 
-  <div className="text-md font-thin">
-    {content.slice(0, 100) + "...."}
-  </div>
+ 
+                 <div
+   className="text-md font-thin overflow-hidden"
+   dangerouslySetInnerHTML={{
+     __html:
+       content.length > 100
+         ? DOMPurify.sanitize(content.slice(0, 100)) + "..."
+         : DOMPurify.sanitize(content),
+   }}
+ ></div>
 
   <div className="text-slate-400 text-sm font-thin pt-3">
     {`${Math.ceil(content.length / 100)} minute(s) read`}

@@ -1,4 +1,7 @@
 import { Link } from "react-router-dom";
+//@ts-ignore
+import DOMPurify from "dompurify";
+
 
 interface BlogcardProps {
     id: number;
@@ -52,9 +55,15 @@ export const Blogcard = ({
                     )}
                 </div>
 
-                <div className="text-md font-thin">
-                    {content.length > 100 ? content.slice(0, 100) + "...." : content}
-                </div>
+                <div
+  className="text-md font-thin overflow-hidden"
+  dangerouslySetInnerHTML={{
+    __html:
+      content.length > 100
+        ? DOMPurify.sanitize(content.slice(0, 100)) + "..."
+        : DOMPurify.sanitize(content),
+  }}
+></div>
 
                 <div className="text-slate-400 text-sm font-thin pt-3">
                     {`${Math.ceil(content.length / 100)} minute(s) read`}
